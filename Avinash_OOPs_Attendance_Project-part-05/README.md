@@ -60,3 +60,48 @@ This is a 10-part code-along project to build a console-based school attendance 
 1. Navigate to the project root directory.
 2. Compile: `javac src/com/school/*.java`
 3. Run: `java -cp src com.school.Main`
+
+## Part 6: File storage (Storable + FileStorageService)
+
+- Added `Storable.java` interface with `String toDataString()` for serializing domain objects to CSV-like lines.
+- Implemented `toDataString()` in:
+	- `Student.java` -> returns `id,name,gradeLevel`
+	- `Course.java` -> returns `courseId,courseName`
+	- `AttendanceRecord.java` -> returns `studentId,courseId,status`
+- Added `FileStorageService.java` which exposes `saveData(List<? extends Storable> items, String filename)` and writes each item's `toDataString()` to the given file using `PrintWriter` + `FileWriter` (try-with-resources).
+- Updated `Main.java` to create sample `students`, `courses`, and `attendance` lists, then call `saveData(...)` to write three files: `students.txt`, `courses.txt`, and `attendance_log.txt`.
+
+### Verifying output files
+
+1. After running `Main`, three files are created in the working directory where the JVM was launched:
+	 - `students.txt` (format: `id,name,gradeLevel`)
+	 - `courses.txt` (format: `courseId,courseName`)
+	 - `attendance_log.txt` (format: `studentId,courseId,status`)
+2. Example contents produced by the included sample run:
+
+```
+students.txt
+1,Alice,10th
+2,Bob,9th
+
+courses.txt
+C101,Mathematics
+C102,Science
+
+attendance_log.txt
+1,C101,Present
+2,C102,Absent
+```
+
+If you don't see the files in the project root, check the current working directory used when launching the JVM and look there for the three files.
+
+### How to compile & run (recommended)
+
+From the project root (this repository):
+
+```bash
+javac -d out src/com/school/*.java
+java -cp out com.school.Main
+```
+
+This will produce `students.txt`, `courses.txt`, and `attendance_log.txt` in the directory you run the command from.
