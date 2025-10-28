@@ -1,0 +1,15 @@
+--- Console output: Git push to origin (branch part-06) ---
+Enumerating objects: 31, done.
+Counting objects: 100% (31/31), done.
+Delta compression using up to 16 threads
+Compressing objects: 100% (24/24), done.
+Writing objects: 100% (28/28), 9.06 KiB | 546.00 KiB/s, done.
+Total 28 (delta 4), reused 0 (delta 0), pack-reused 0 (from 0)
+remote: Resolving deltas: 100% (4/4), completed with 1 local object.
+remote:
+remote: Create a pull request for 'part-06' on GitHub by visiting:
+remote:      https://github.com/PRIYANSHI-eng/Attendance_System/pull/new/part-06
+remote:
+To https://github.com/PRIYANSHI-eng/Attendance_System.git
+ * [new branch]      part-06 -> part-06
+branch 'part-06' set up to track 'origin/part-06'.
